@@ -67,10 +67,6 @@ export default async function HeaderWeb() {
             label: 'Browse',
           },
           {
-            href: '/use-design-template',
-            label: 'Create',
-          },
-          {
             href: '/library',
             label: 'Your Creations',
           },
