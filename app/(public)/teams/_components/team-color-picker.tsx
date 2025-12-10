@@ -75,13 +75,13 @@ export function TeamColorPicker({ teamId, initialColors, onColorsUpdate }: TeamC
     try {
       const result = await updateTeamColors({ team_id: teamId, colors })
 
-      if (result.error) {
+      if (result?.data?.error) {
         toast({
           title: 'Fehler',
-          description: result.error,
+          description: result.data.error,
           variant: 'destructive',
         })
-      } else {
+      } else if (result?.data?.success) {
         toast({
           title: 'Erfolg',
           description: 'Team-Farben wurden erfolgreich aktualisiert.',

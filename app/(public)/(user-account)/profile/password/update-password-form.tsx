@@ -26,15 +26,15 @@ export default function UpdatePasswordForm() {
     zodResolver(updatePasswordSchema),
     {
       actionProps: {
-        onSuccess: (data: { success?: string; error?: string }) => {
-          if (data.success) {
+        onSuccess: ({ data }) => {
+          if (data?.success) {
             toast({
               title: 'Password updated',
               description: data.success,
             })
             resetFormAndAction()
           }
-          if (data.error) {
+          if (data?.error) {
             toast({
               variant: 'destructive',
               title: 'Error updating password',
