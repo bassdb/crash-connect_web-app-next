@@ -29,6 +29,7 @@ export async function GET() {
       apps: ['TEAM_ID.com.crashconnect.app'],
     },
   }
+  
 
   return new NextResponse(JSON.stringify(aasa), {
     headers: {
