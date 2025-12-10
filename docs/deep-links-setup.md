@@ -260,3 +260,5 @@ Wenn die App nicht installiert ist, öffnet sich die normale Website. Du kannst 
 - [Android App Links](https://developer.android.com/training/app-links)
 - [Next.js Routing](https://nextjs.org/docs/app/building-your-application/routing)
 
+
+

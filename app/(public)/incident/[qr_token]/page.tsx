@@ -15,11 +15,13 @@ export default async function IncidentWelcomePage({
   // Server-seitige Token-Verifizierung
   const { data: vehicle, error } = await supabase
     .from('vehicles')
-    .select('id, license_plate, qr_token, owner_id')
+    .select('id, license_plate, qr_token, vehicle_details, created_at')
     .eq('qr_token', qr_token)
     .single()
   
   if (error || !vehicle) {
+    console.error('Vehicle not found for qr_token:', qr_token)
+    console.error('Error details:', error)
     notFound()
   }
   
