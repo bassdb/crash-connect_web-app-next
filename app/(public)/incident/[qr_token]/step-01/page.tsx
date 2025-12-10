@@ -13,6 +13,7 @@ const INCIDENT_TYPES: IncidentTypeOption[] = [
   { value: 'damage', label: 'Beschädigung', icon: '🚗💥' },
   { value: 'theft', label: 'Diebstahl', icon: '🚨' },
   { value: 'accident', label: 'Unfall', icon: '⚠️' },
+  { value: 'vandalism', label: 'Vandalismus', icon: '🔨' },
   { value: 'other', label: 'Sonstiges', icon: '📝' }
 ]
 

@@ -3,7 +3,7 @@ import { z } from 'zod'
 // Step 01 - Incident Type
 export const incidentTypeSchema = z.object({
   qrToken: z.string().uuid(),
-  incidentType: z.enum(['damage', 'theft', 'accident', 'other']),
+  incidentType: z.enum(['damage', 'theft', 'accident', 'vandalism', 'other']),
   turnstileToken: z.string().min(1),
   honeypot: z.string().optional().refine((val) => !val, {
     message: 'Bot detected'
