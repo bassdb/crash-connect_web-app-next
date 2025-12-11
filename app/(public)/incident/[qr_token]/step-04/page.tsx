@@ -17,7 +17,7 @@ export default function PhoneVerificationStep() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   
   const { execute: submitIncident, result: submitResult } = useAction(submitIncidentAction)
-  const { execute: verifyPhone, result: verifyResult } = useAction(verifyPhoneAction)
+  const { execute: verifyPhone, result: verifyResult, isPending: isVerifying } = useAction(verifyPhoneAction)
   const { execute: resendCode, result: resendResult } = useAction(resendVerificationCodeAction)
   
   useEffect(() => {
@@ -127,7 +127,7 @@ export default function PhoneVerificationStep() {
             <PhoneVerificationInput
               onSubmit={handleVerify}
               onResend={handleResend}
-              isLoading={verifyResult?.status === 'executing'}
+              isLoading={isVerifying}
               error={verifyResult?.data?.error || verifyResult?.serverError}
             />
             {resendResult?.data?.success && (

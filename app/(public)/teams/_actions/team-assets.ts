@@ -10,7 +10,7 @@ import type { Team } from '@/types/teams-types'
 export const updateTeamLogo = actionClient
   .schema(updateTeamLogoSchema)
   .action(async ({ parsedInput }) => {
-    const { team_id, avatar_url } = parsedInput
+    const { team_id, team_logo_url } = parsedInput
 
     // Prüfen ob Benutzer Owner oder Admin ist
     const { checkTeamPermission } = await import('./team-permissions')
@@ -23,7 +23,7 @@ export const updateTeamLogo = actionClient
 
     const { data: team, error } = await supabase
       .from('teams')
-      .update({ avatar_url })
+      .update({ avatar_url: team_logo_url })
       .eq('id', team_id)
       .select()
       .single()

@@ -165,7 +165,7 @@ export function TeamsList({ onCreateNewClick, initialTeams }: TeamsListProps) {
               <div className='flex items-center justify-between'>
                 <div className='flex items-center space-x-3'>
                   <Avatar className='w-10 h-10'>
-                    <AvatarImage src={team.team_logo_url || ''} alt={team.name} />
+                    <AvatarImage src={team.avatar_url || ''} alt={team.name} />
                     <AvatarFallback className='text-sm font-medium'>
                       {getInitials(team.name)}
                     </AvatarFallback>

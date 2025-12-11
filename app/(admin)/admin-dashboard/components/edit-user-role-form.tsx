@@ -48,14 +48,12 @@ export default function EditUserRoleForm({
   userId: string
   availableRoles: string[]
 }) {
-  const form = useForm<z.infer<typeof userIdWithRoleSchema>>({
+  const form = useForm<z.infer<typeof userRoleSchema>>({
     resolver: zodResolver(userRoleSchema),
     defaultValues: {
       role: UserRoles.CONSUMER,
     },
   })
-
-  console
 
   const [success, setSuccess] = useState('')
   const [error, setError] = useState('')

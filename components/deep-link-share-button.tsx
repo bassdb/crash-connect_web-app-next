@@ -14,7 +14,7 @@ import { Share2, Copy, Mail, MessageSquare, Check } from 'lucide-react'
 import { toast } from '@/hooks/use-toast'
 
 // React imports
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 // Client logic imports
 import { createUniversalLink } from '@/lib/deep-links'
@@ -37,11 +37,18 @@ export function DeepLinkShareButton({
   description,
 }: DeepLinkShareButtonProps) {
   const [isCopied, setIsCopied] = useState(false)
+  const [universalLink, setUniversalLink] = useState<string>('')
 
   // Erstelle Universal Link basierend auf der aktuellen Domain
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const domain = window.location.host
+      setUniversalLink(createUniversalLink(domain, path, params))
+    }
+  }, [path, params])
+
   const getUniversalLink = () => {
-    const domain = window.location.host
-    return createUniversalLink(domain, path, params)
+    return universalLink
   }
 
   const handleCopyLink = async () => {
@@ -148,7 +155,7 @@ export function DeepLinkShareButton({
         <div className="px-2 py-1.5 text-xs text-muted-foreground">
           <div className="font-medium mb-1">Universal Link</div>
           <div className="truncate font-mono text-[10px]">
-            {getUniversalLink()}
+            {universalLink || 'Lade...'}
           </div>
         </div>
       </DropdownMenuContent>

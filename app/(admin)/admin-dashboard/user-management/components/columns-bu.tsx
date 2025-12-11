@@ -1,7 +1,7 @@
 'use client'
 
 import { ColumnDef } from '@tanstack/react-table'
-import { SupabaseUserProfileWithRole } from '@/types/supabase-types'
+import { UserProfileWithRole } from '@/types/supabase-types'
 
 import { MoreHorizontal } from 'lucide-react'
 
@@ -15,14 +15,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 
-export type Payment = {
-  id: string
-  amount: number
-  status: 'pending' | 'processing' | 'success' | 'failed' | 'completed'
-  email: string
-}
-
-export const columns: ColumnDef<SupabaseUserProfileWithRole>[] = [
+export const columns: ColumnDef<UserProfileWithRole>[] = [
   {
     accessorKey: 'email',
     header: 'Email',
@@ -52,7 +45,7 @@ export const columns: ColumnDef<SupabaseUserProfileWithRole>[] = [
     id: 'actions',
     header: 'Actions',
     cell: ({ row }) => {
-      const payment = row.original
+      const user = row.original
 
       return (
         <div className='flex justify-end'>
@@ -65,12 +58,12 @@ export const columns: ColumnDef<SupabaseUserProfileWithRole>[] = [
             </DropdownMenuTrigger>
             <DropdownMenuContent align='end'>
               <DropdownMenuLabel>Actions</DropdownMenuLabel>
-              <DropdownMenuItem onClick={() => navigator.clipboard.writeText(payment.id)}>
-                Copy payment ID
+              <DropdownMenuItem onClick={() => navigator.clipboard.writeText(user.profile_id)}>
+                Copy user ID
               </DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>View customer</DropdownMenuItem>
-              <DropdownMenuItem>View payment details</DropdownMenuItem>
+              <DropdownMenuItem>View user</DropdownMenuItem>
+              <DropdownMenuItem>View user details</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>

@@ -50,7 +50,7 @@ export default function ForgotPasswordForm() {
     },
   })
 
-  const onSubmit = (values: z.infer<typeof forgotPasswordSchema>) => {
+  const onSubmit = (values: z.infer<typeof emailSchema>) => {
     execute(values)
   }
 

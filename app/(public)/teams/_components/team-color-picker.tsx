@@ -81,7 +81,7 @@ export function TeamColorPicker({ teamId, initialColors, onColorsUpdate }: TeamC
           description: result.data.error,
           variant: 'destructive',
         })
-      } else if (result?.data?.success) {
+      } else if (result?.data?.team) {
         toast({
           title: 'Erfolg',
           description: 'Team-Farben wurden erfolgreich aktualisiert.',

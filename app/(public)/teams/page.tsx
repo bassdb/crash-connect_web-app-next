@@ -241,7 +241,7 @@ export default async function TeamsPage() {
                   <div className='flex items-start justify-between'>
                     <div className='flex items-center space-x-3'>
                       <Avatar className='w-12 h-12'>
-                        <AvatarImage src={team.team_logo_url || ''} alt={team.name} />
+                        <AvatarImage src={team.avatar_url || ''} alt={team.name} />
                         <AvatarFallback className='text-sm font-medium'>
                           {getInitials(team.name)}
                         </AvatarFallback>

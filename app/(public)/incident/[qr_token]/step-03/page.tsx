@@ -29,8 +29,6 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, React.TextareaHTMLAttribu
   }
 )
 Textarea.displayName = 'Textarea'
-import { Input } from '@/components/ui/input'
-import { HoneypotField } from '@/components/incident/honeypot-field'
 
 type IncidentDetailsForm = z.infer<typeof incidentDetailsSchema>
 

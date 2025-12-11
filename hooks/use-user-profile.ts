@@ -1,5 +1,6 @@
-import { useUser } from '@supabase/auth-helpers-react'
-import { useMemo } from 'react'
+import { createClient } from '@/server/supabase/client'
+import { useMemo, useState, useEffect } from 'react'
+import type { User } from '@supabase/supabase-js'
 
 export interface UserProfile {
   role: string
@@ -19,10 +20,31 @@ export interface UserProfile {
  * @returns UserProfile object with role, avatar, name, and username
  */
 export function useUserProfile(): UserProfile {
-  const user = useUser()
+  const [user, setUser] = useState<User | null>(null)
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    const supabase = createClient()
+    
+    const loadUser = async () => {
+      const { data: { user } } = await supabase.auth.getUser()
+      setUser(user)
+      setIsLoading(false)
+    }
+
+    void loadUser()
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null)
+    })
+
+    return () => {
+      subscription.unsubscribe()
+    }
+  }, [])
 
   return useMemo(() => {
-    if (!user) {
+    if (!user || isLoading) {
       return {
         role: 'consumer',
         isAuthenticated: false,
@@ -43,7 +65,7 @@ export function useUserProfile(): UserProfile {
       isAuthenticated: true,
       userId: user.id,
     }
-  }, [user])
+  }, [user, isLoading])
 }
 
 /**
