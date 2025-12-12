@@ -1,0 +1,26 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "9A6R4GBWP3.m.unication.notify-owner",
+        "paths": [
+          "/incident/*",
+          "/auth/*",
+          "/sign-in",
+          "/sign-up",
+          "/dashboard",
+          "/teams/*",
+          "/protected/*",
+          "/auth-feedback",
+          "/auth-message"
+        ]
+      }
+    ]
+  },
+  "webcredentials": {
+    "apps": ["9A6R4GBWP3.m.unication.notify-owner"]
+  }
+}
+
+
